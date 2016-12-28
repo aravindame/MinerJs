@@ -1,39 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<script src="d3.v3.min.js" type="text/JavaScript">
-</script>
-<style>
-    .inactive,
-    .tentative {
-        stroke: darkgray;
-        stroke-width: 2px;
-        stroke-dasharray: 5 5;
-    }
-    .active {
-        stroke: black;
-        stroke-width: 4px;
-        stroke-dasharray: 1;
-    }
-    circle {
-        fill: red;
-    }
-
-    rect {
-        fill: darkgray;
-    }
-</style>
-
+<head>
+    <meta name="description" content="D3byEx 2.3">
+</head>
 <body>
-    <div id="infovizDiv">
-        <svg style="width:500px;height:500px;border:1px lightgray solid;">
-<path d="M 10,60 40,30 50,50 60,30 70,80" />
-<polygon class="inactive" points="80,40 12,40 16,44 12,48 6,46" />
-<g>
-<circle class="active tentative" cy="100" cx="200" r="30"/>
-<rect class="active" x="410" y="200" width="100" height="50" />
-</g>
-</svg>
-    </div>
+    <button onclick='render([5, 10])'>Take action!</button>
+    <script src="http://d3js.org/d3.v3.min.js" charset=" utf-8"></script>
+    <script>
+    function render(dataToRender) {
+        var selector = d3.select('body')
+                         .selectAll('div')
+                         .data([dataToRender]);
+        selector.enter()
+                .append('div')
+                .text(function(d){
+                  return d;
+                });
+     }
+    </script>
 </body>
-
 </html>
